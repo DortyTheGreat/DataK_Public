@@ -1,0 +1,41 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+using namespace std;
+double tele(double a, double b){
+if(a <= b/2){return a;}
+return b-a;
+}
+double fact(double a){
+double ans=1;
+for(double i=1;i<a+1;i++){
+    ans*=i;
+}
+return ans;}
+double KulBin(double a, double b){
+return fact(a+b-1)/(fact(b) * fact(a-1));
+
+}
+double RightBin(double a, double b){
+
+return fact(a)/(fact(b)*fact(a-b) );
+}
+
+int main()
+{
+
+int n;
+cin >> n;
+if(n == 1){
+    cout << "9"; return 0;
+}
+int mult2= n%2;
+n/=2;
+double ans=0;
+for(int i=0;i<n;i++){
+    ans+=pow(-1,i)* RightBin(2*n,i) * RightBin(11*n-1-10*i,2*n-1);
+
+}
+cout << fixed << setprecision(0)<< ans + ans*9*(mult2) - 1 << endl;
+
+}

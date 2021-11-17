@@ -1,0 +1,47 @@
+/*
+ƒаны $N$ целых чисел $X_1$, $X_2$, ..., $X_N$. “ребуетс€ вычеркнуть из них минимальное количество чисел так, чтобы оставшиес€ шли в пор€дке возрастани€.
+
+¬ходные данные
+¬ первой строке находитс€ число $N$. ¬ следующей строке - $N$ чисел через пробел. 1 <= $N$ <= 10 000, 1 <= $X_i$ <= 60 000.
+
+¬ыходные данные
+¬ первой строке выводитс€ количество невычеркнутых чисел, во второй - сами невычеркнутые числа через пробел в исходном пор€дке. ≈сли вариантов несколько, вывести любой.
+*/
+
+
+
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int m=8;
+    int orriginal[10000];
+    cin >> m;
+    for(int i=0;i<m;i++){
+        cin >> orriginal[i];
+
+    }
+    int pointers[10000];
+int tempt=0;
+int maxi=-1, index=0;
+    for(int i=m-1;i>-1;i--){
+    tempt=0;
+    for(int j=i;j<m;j++){
+         if(pointers[j] > tempt && orriginal[i] < orriginal[j] ){
+            tempt=pointers[j];
+         }
+    }
+    tempt++;
+    pointers[i]= tempt;
+    if(maxi < tempt){maxi=tempt;index= i;}
+    }
+
+    cout << maxi << endl;
+    for(int i=index;i<m;i++){
+        if(pointers[i] == maxi){
+            cout << orriginal[i] << " ";maxi-=1;
+        }
+    }
+}

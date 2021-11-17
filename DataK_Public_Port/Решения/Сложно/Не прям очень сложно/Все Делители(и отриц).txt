@@ -1,0 +1,109 @@
+// Есть a
+// Вывести все его делители(и отрицательные)
+// 6 -> -6 -3 -2 -1 1 2 3 6
+// -6 -> -6 -3 -2 -1 1 2 3 6
+// 1 -> -1 1
+// -1 -> -1 1
+
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+
+using namespace std;
+ // Std funcs for arrays
+ long long BetterMod(long long a, long long b){
+
+if (a < 0){return (a % b) + b;}
+return abs(a % b);
+
+}
+void writeArr(int* a,long long n){
+    for(long long i=0;i<n;i++){
+        cout << a[i] << " ";
+    }
+    cout << endl;
+}
+
+void readArr(int* a,long long n){
+for(long long i=0;i<n;i++){
+    cin >> a[i];
+}
+}
+void randArr(int* a, long long A, long long B, long long n){
+    if(A == B){B++;}
+    for(int i=0;i<n;i++){
+        a[i]=(rand() % (B-A)) + A;
+        }
+}
+void qsort(int* A, int L, int R, int* B){
+if(R - L <= 1) return;
+int mid = A[L + rand() % (R - L)];
+int x = L, y = L;
+for(int i = L; i < R; ++i){
+    if (A[i] < mid){
+    swap(A[x], A[i]); swap(B[x], B[i]);
+    if (x != y){ swap(A[y], A[i]); swap(B[y], B[i]);}
+    ++x; ++y;
+} else if (A[i] == mid) {
+swap(A[y], A[i]); swap(B[y], B[i]);
+++y;
+}
+}
+qsort(A, L, x, B);
+qsort(A, y, R, B);
+}
+long long summ(long long x){
+long long ans=0;
+while(x){
+    ans+=x%10;
+    x/=10;
+
+}
+return ans;
+}
+using namespace std;
+double strangeF(double x){
+return (pow((2+sqrt(8)),x)   +  pow((2-sqrt(8)),x)   - pow(2,(x+1))   )/8;
+}
+long long fact(long long x){
+long long ans=1;
+for(int i=1;i<x+1;i++){
+    ans*=i;
+}
+return ans;
+}
+int main()
+{
+    int anses[100000],h=0;
+    int a;
+    cin >> a;
+    a=abs(a);
+    for(int i=1;i<sqrt( abs(a) );i++){
+        if(a%i==0){anses[h]=i;h++;}
+    }
+
+
+
+    for(int i=h-1;i>-1;i--){
+        cout << "-"<<a/anses[h-i-1] << " ";
+    }
+
+    if( int(sqrt( abs(a))) == sqrt( abs(a)) ){
+        cout <<"-" <<sqrt(abs(a)) << " ";
+    }
+
+    for(int i=0;i<h;i++){
+        cout << "-"<<anses[h-i-1] << " ";
+    }
+
+
+    for(int i=0;i<h;i++){
+        cout << anses[i] << " ";
+    }
+    if( int(sqrt( abs(a))) == sqrt( abs(a)) ){
+        cout <<"" <<sqrt(abs(a)) << " ";
+    }
+    for(int i=h-1;i>-1;i--){
+        cout << a/anses[i] << " ";
+    }
+}

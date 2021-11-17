@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1584179740 source:d:\shifrovaniesharapova\main.cpp
+	<iostream>
+	<conio.h>
+	<windows.h>
+
+1584183438 source:i:\shifrovaniesharapova\main.cpp
+	<iostream>
+	<conio.h>
+	<windows.h>
+	<iostream>
+	<string>
+	<fstream>
+

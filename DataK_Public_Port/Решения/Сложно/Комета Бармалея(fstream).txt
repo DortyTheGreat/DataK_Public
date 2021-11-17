@@ -1,0 +1,17 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main()
+{
+    long long a1, a2, c, ji;
+    ifstream in("input.txt");
+    in >> a1 >> a2 >> c;
+    in.close();
+    ji = a2 - a1;
+    a1 %= c;
+    a2 = a1 + ji;
+    ofstream ou("output.txt");
+    ou << a2 / c + (a1 == 0);
+    ou.close();
+}

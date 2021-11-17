@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1600091751 source:c:\users\mr.snic\desktop\451512351\main.cpp
+	<iostream>
+	<windows.h>
+	<iomanip>
+
+1600109209 source:c:\users\mr.snic\desktop\testpower Ч копи€\main.cpp
+	<iostream>
+	<ctime>
+	<iomanip>
+	<stdlib.h>
+	<string>
+	<fstream>
+

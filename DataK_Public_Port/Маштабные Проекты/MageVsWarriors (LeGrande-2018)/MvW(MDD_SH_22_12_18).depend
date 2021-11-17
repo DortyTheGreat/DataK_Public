@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1600194529 source:c:\users\mr.snic\desktop\mvw(mdd_sh_22_12_18)\main.cpp
+	<iostream>
+	<istream>
+	<string>
+	<cstring>
+	<cstdlib>
+	<cmath>
+	<stdlib.h>
+	<cwchar>
+	<conio.h>
+

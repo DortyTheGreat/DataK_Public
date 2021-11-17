@@ -1,0 +1,23 @@
+#include <cmath>
+#include <iostream>
+using namespace std;
+
+
+
+int main(){
+int a;
+int an[100],m=0;
+cin >> a;
+if(a== 0){cout<<"0";return 0;}
+while(a!=0){
+    an[m]=a%10;
+    m++;
+
+    a/=10;
+}
+for(int i=m-1;i>-1;i--){
+
+    cout<<an[i]<<endl;
+}
+
+}

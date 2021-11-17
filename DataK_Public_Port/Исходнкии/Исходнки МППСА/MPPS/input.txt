@@ -1,0 +1,9 @@
+cin   >> youtube >> tigay; 
+cout << tigay;     
+cin >> youtube >> tigay;    
+return 909   <<   e0001   ;  
+              'dhgkdkdfhjg349u  '  <<'   890uj ' <<' fhdjk ';
+'ldff ' '\\;sd'f';
+cin >> youtube >> tigay;
+cin >> youtube >> tigay;
+cin >> youtube >> tigay;

@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1601741743 source:c:\users\mr.snic\desktop\recursion\main.cpp
+	<iostream>
+	<string>
+	<fstream>
+	<conio.h>
+

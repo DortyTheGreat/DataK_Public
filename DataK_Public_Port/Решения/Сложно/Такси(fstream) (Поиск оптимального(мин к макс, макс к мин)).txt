@@ -1,0 +1,86 @@
+/*
+После затянувшегося совещания директор фирмы решил заказать такси,
+ чтобы развезти сотрудников по домам. Он заказал N машин - ровно столько, 
+сколь у него сотрудников. Однако когда они подъехали, оказалось,
+ что у каждого водителя такси свой тариф за 1 километр.
+Директор знает, какому сотруднику сколько километров от работы до дома 
+(к сожалению, все сотрудники живут в разных направлениях, поэтому нельзя
+ отправить двух сотрудников на одной машине). Теперь директор хочет определить,
+ какой из сотрудников на каком такси должен поехать домой, чтобы суммарные затраты 
+на такси (а их несет фирма) были минимальны.
+*/
+
+
+
+#include <iostream>
+#include<stdio.h>
+#include <fstream>
+using namespace std;
+void swap(int* a, int* b)
+{
+    int t = *a;
+    *a = *b;
+    *b = t;
+}
+int partition(int arr[], int low, int high, int b[])
+{
+    int pivot = arr[high];
+    int i = (low - 1);
+
+    for (int j = low; j <= high- 1; j++)
+    {
+        if (arr[j] <= pivot)
+        {
+            i++;
+            swap(&arr[i], &arr[j]);
+            swap(&b[i], &b[j]);
+        }
+    }
+    swap(&arr[i + 1], &arr[high]);
+    swap(&b[i + 1], &b[high]);
+    return (i + 1);
+}
+void quickSort(int arr[], int low, int high, int b[])
+{
+    if (low < high)
+    {
+        int pi = partition(arr, low, high, b);
+        quickSort(arr, low, pi - 1, b);
+        quickSort(arr, pi + 1, high, b);
+    }
+}
+int main()
+{
+    int a[1000], b[1000], A1[1000], B1[1000];
+    int IN;
+    ifstream in("input.txt");
+    in >> IN;
+    for (int i = 0; i< IN; i++){
+        in >> a[i];
+        A1[i] = i;
+    }
+    for (int i = 0; i < IN; i++){
+        in >> b[i];
+        B1[i] = i;
+    }
+    quickSort(a, 0, IN-1, A1);
+    quickSort(b, 0, IN-1, B1);
+for(int i = 0; i < IN; i++){
+    cout << A1[i] << " ";
+}
+cout << endl;
+for(int i = 0; i < IN; i++){
+    cout << B1[i] << " ";
+}
+cout << endl;
+in.close();
+ofstream ou("output.txt");
+int outer[1000];
+    for (int i = 0; i < IN; i++){
+        outer[A1[i]] = B1[IN-i-1] + 1;
+    }
+    for (int i = 0; i < IN; i++){
+       ou << outer[i] << " ";
+    }
+    ou.close();
+}

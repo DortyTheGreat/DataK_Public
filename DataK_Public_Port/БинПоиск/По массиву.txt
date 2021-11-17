@@ -1,0 +1,10 @@
+long long binsearch(int arr[], int n, int k, int L, int R){
+    while (R - L > 1) {
+        int t = (R + L) / 2;
+        if (cowcnt(t, arr, n) >= k)
+            L = t;
+        else
+            R = t;
+    }
+    return L;
+}

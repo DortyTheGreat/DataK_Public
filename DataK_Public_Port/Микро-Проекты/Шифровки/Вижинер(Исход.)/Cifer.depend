@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1574143545 source:c:\users\Пользователь\documents\9а-1\Кулешов 9-А\cifer\main.cpp
+	<iostream>
+	<string>
+	<fstream>
+

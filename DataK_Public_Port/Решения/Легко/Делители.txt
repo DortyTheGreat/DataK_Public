@@ -1,0 +1,16 @@
+#include <cmath>
+#include <iostream>
+using namespace std;
+void lul(int ab){
+for(int i=1;i<ab+1;i++){
+    if(ab%i == 0){cout<< i<<" ";}
+}
+
+}
+
+
+int main(){
+int a;
+cin>>a;
+lul(a);
+}

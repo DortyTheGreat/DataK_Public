@@ -1,0 +1,13 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    long long a1, a2, c, ji, help;
+    cin >> a1 >> a2 >> c;
+    ji = a2 - a1;
+    a1 %= c;
+    a2 = a1 + ji;
+    cout << a2 / c + (a1 == 0);
+}

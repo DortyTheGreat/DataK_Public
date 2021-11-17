@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1573245563 source:c:\users\mr.snic\desktop\graphics\main.cpp
+	<iostream>
+	<windows.h>
+

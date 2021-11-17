@@ -1,0 +1,224 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <algorithm>
+using namespace std;
+
+char FromIntToChar(int a){
+switch(a){
+case 0: return '0';
+case 1: return '1';
+case 2: return '2';
+case 3: return '3';
+case 4: return '4';
+case 5: return '5';
+case 6: return '6';
+case 7: return '7';
+case 8: return '8';
+case 9: return '9';
+case 10: return 'A';
+case 11: return 'B';
+case 12: return 'C';
+case 13: return 'D';
+case 14: return 'E';
+case 15: return 'F';
+case 16: return 'G';
+case 17: return 'H';
+case 18: return 'I';
+case 19: return 'J';
+case 20: return 'K';
+case 21: return 'L';
+case 22: return 'M';
+case 23: return 'N';
+case 24: return 'O';
+case 25: return 'P';
+case 26: return 'Q';
+case 27: return 'R';
+case 28: return 'S';
+case 29: return 'T';
+case 30: return 'U';
+case 31: return 'V';
+case 32: return 'W';
+case 33: return 'X';
+case 34: return 'Y';
+case 35: return 'Z';
+}
+}
+
+int FromCharToInt(char a){
+if(a == '0'){return 0;}
+if(a == '1'){return 1;}
+if(a == '2'){return 2;}
+if(a == '3'){return 3;}
+if(a == '4'){return 4;}
+if(a == '5'){return 5;}
+if(a == '6'){return 6;}
+if(a == '7'){return 7;}
+if(a == '8'){return 8;}
+if(a == '9'){return 9;}
+if(a == 'A'){return 10;}
+if(a == 'B'){return 11;}
+if(a == 'C'){return 12;}
+if(a == 'D'){return 13;}
+if(a == 'E'){return 14;}
+if(a == 'F'){return 15;}
+if(a == 'G'){return 16;}
+if(a == 'H'){return 17;}
+if(a == 'I'){return 18;}
+if(a == 'J'){return 19;}
+if(a == 'K'){return 20;}
+if(a == 'L'){return 21;}
+if(a == 'M'){return 22;}
+if(a == 'N'){return 23;}
+if(a == 'O'){return 24;}
+if(a == 'P'){return 25;}
+if(a == 'Q'){return 26;}
+if(a == 'R'){return 27;}
+if(a == 'S'){return 28;}
+if(a == 'T'){return 29;}
+if(a == 'U'){return 30;}
+if(a == 'V'){return 31;}
+if(a == 'W'){return 32;}
+if(a == 'X'){return 33;}
+if(a == 'Y'){return 34;}
+if(a == 'Z'){return 35;}
+
+}
+
+int const SIZEE_=10000;
+class PosSSCouSys{
+public:
+    int nums[SIZEE_];
+    int sizeOfNum;
+    int typOsys;
+    void read_data(int SS){
+        for(int i=0;i<SIZEE_;i++){
+            nums[i]=0;
+        }
+
+    typOsys=SS;
+    string _stream;
+    cin >> _stream;
+    sizeOfNum=_stream.size();
+    for(int i=0;i<sizeOfNum;i++){
+        nums[(SIZEE_ - sizeOfNum) + i]=FromCharToInt(_stream[i]);
+    }
+
+    }
+
+    void read_data(int SS, string __stream){
+        for(int i=0;i<SIZEE_;i++){
+            nums[i]=0;
+        }
+
+    typOsys=SS;
+    string _stream = __stream;
+
+    sizeOfNum=_stream.size();
+    for(int i=0;i<sizeOfNum;i++){
+        nums[(SIZEE_ - sizeOfNum) + i]=FromCharToInt(_stream[i]);
+    }
+
+    }
+
+    void SetToOne(){
+        for(int i=0;i<SIZEE_;i++){
+            nums[i]=0;
+        }
+        nums[SIZEE_-1]=1;
+    }
+
+    void SetToZero(){
+        for(int i=0;i<SIZEE_;i++){
+            nums[i]=0;
+        }
+    }
+
+    void OneNumTransform(int pos){
+
+    nums[pos-1]=nums[pos-1] + nums[pos]/typOsys;
+    nums[pos]= nums[pos]%typOsys;
+    }
+    void transformato(int SStoTransform){
+    typOsys=SStoTransform;
+    for(int i=SIZEE_-1;i>-1;i--){
+        OneNumTransform(i);
+    }
+    }
+
+
+    void debugOutPut(){
+    for(int i=0;i<SIZEE_;i++){
+        cout << nums[i] << " ";
+    }
+    cout << endl;
+    }
+
+    void _plus(PosSSCouSys custom){
+    for(int i=0;i<SIZEE_;i++){
+        nums[i]=nums[i]+custom.nums[i];
+    }
+    }
+
+    void MultEachDigit(int mult){
+    for(int i=0;i<SIZEE_;i++){
+        nums[i]=nums[i]*mult;
+    }
+    }
+
+    string return_ans(){
+    string ans="";
+    int flag=0;
+    for(int i=0;i<SIZEE_;i++){
+            if(nums[i] != 0){flag=1;}
+    if(flag) {ans= ans + FromIntToChar(nums[i]);}
+
+    }
+    return ans;
+    }
+};
+
+
+string ConvertSS(string __num, int FROM, int TO) {
+    string temp=__num;
+    if(temp[0] == '-'){
+        cout << "-";
+        temp.erase(temp.begin());
+    }
+
+    PosSSCouSys num,num2,mask,ans;
+    num.read_data(FROM,temp);
+    mask.SetToOne();
+    ans.SetToZero();
+    //num.debugOutPut();
+
+
+    for(int i=0;i<num.sizeOfNum;i++){
+
+    //mask.debugOutPut();
+    num2 = mask;
+    num2.MultEachDigit(num.nums[SIZEE_- i -1]);
+    //num2.debugOutPut();
+    ans._plus(num2);
+    ans.transformato(TO);
+    //ans.debugOutPut();
+    //cout << endl;
+
+    mask.MultEachDigit(FROM);
+    mask.transformato(TO);
+    }
+    //num.transformato(2);
+    //ans.debugOutPut();
+    return ans.return_ans();
+}
+
+
+
+
+int main(){
+string num;
+cin >> num;
+int a,b;
+cin >> a >> b;
+cout <<ConvertSS(num,a,b);
+}

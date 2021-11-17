@@ -1,0 +1,76 @@
+#include <iostream>
+#include <fstream>
+//MPPS
+using namespace std;
+
+
+char ishodName[]="input.txt",outName[]="output.txt";
+    ifstream inputFile(ishodName);
+    ofstream outFile(outName);
+    string inpstroka,thisword="";
+    string exclude[100];
+    char razdeliteli[100];
+
+
+int DoStopQue(char symbol){
+   int das=1;
+for(int i=0;i<100;i++){
+    if(symbol == razdeliteli[i]){das=0;}
+
+}
+//1 - читаем дальше, 0 - это разделитеть
+return das;
+}
+int main()
+{
+
+
+    for(int i=0;i<100;i++){
+        exclude[i]="";
+        razdeliteli[i]=' ';
+    }
+    razdeliteli[0]=' ';
+    razdeliteli[1]='[';
+    razdeliteli[2]=']';
+    razdeliteli[3]='{';
+    razdeliteli[4]='}';
+    razdeliteli[5]=')';
+    razdeliteli[6]='(';
+    razdeliteli[7]='=';
+    razdeliteli[8]='!';
+    razdeliteli[9]='<';
+    razdeliteli[10]='>';
+    razdeliteli[11]=';';
+    razdeliteli[12]='+';
+    razdeliteli[13]='-';
+    razdeliteli[14]='*';
+    razdeliteli[15]='/';
+    razdeliteli[16]='%';
+    razdeliteli[17]='.';
+    razdeliteli[18]='"';
+
+
+    while(!inputFile.eof()){
+    getline(inputFile,inpstroka);
+    thisword="";
+    for(int i=0;i<inpstroka.size();i++){
+
+    if(DoStopQue(inpstroka[i]) ){
+        //добавляем букву к текущему слову
+
+    }else{
+    //Тут заканчиваем ввод слова
+
+    }
+
+    }
+    outFile << inpstroka + "rawr" << endl;
+    }
+
+
+
+
+    inputFile.close();
+    outFile.close();
+    return 1;
+}

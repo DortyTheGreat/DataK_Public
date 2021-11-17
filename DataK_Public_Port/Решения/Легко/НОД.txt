@@ -1,0 +1,25 @@
+#include <cmath>
+#include <iostream>
+using namespace std;
+int NOD(int a,int b){
+
+   if(a<b){swap(a,b);}
+   while(1){
+
+    a=a-b;
+    if(a==0){break;}else{if(a<b){swap(a,b);}}
+
+   }
+  return b;
+
+}
+
+
+int main()
+{
+   int a,b;
+   cin >> a >> b;
+   cout << NOD(a,b);
+
+
+}

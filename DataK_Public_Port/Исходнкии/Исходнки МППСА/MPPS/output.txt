@@ -1,0 +1,9 @@
+cin>>T>>U;
+cout<<U;
+cin>>T>>U;
+return 909<<V;
+  'dhgkdkdfhjg349u  '<<'   890uj '<<' fhdjk ';
+'ldff ' '\\;sd'f';
+cin>>T>>U;
+cin>>T>>U;
+cin>>T>>U;

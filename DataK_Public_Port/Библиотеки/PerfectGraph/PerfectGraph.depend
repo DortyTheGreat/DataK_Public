@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1630754999 source:c:\users\mr.snic\desktop\codes sample\c++\perfectgraph\main.cpp
+	<iostream>
+	<set>
+

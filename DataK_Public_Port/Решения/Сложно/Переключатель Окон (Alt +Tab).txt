@@ -1,0 +1,26 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+long long newPer(long long a, long long b){
+if (a % b == 0){return b;}
+if (a < 0){return (a % b) + b;}
+return abs(a % b);
+}
+int main()
+{
+int a, m, K, index;
+cin >> K >> index >> m;
+for (int i = 0; i < m; i++){
+    cin >> a;
+    a++;
+    a = newPer(a, K);
+    if (a > index){
+        index++;
+    }else{
+    if (a == index){
+        index = 1;
+    }
+    }
+}
+cout << index;
+}

@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1630741726 source:c:\users\mr.snic\desktop\codes sample\c++\dortylib\main.cpp
+	<iostream>
+	"DortyBuild.h"
+	"DortyMath.h"
+
+1630742231 c:\users\mr.snic\desktop\codes sample\c++\dortylib\dortybuild.h
+	<fstream>
+	<string>
+	<iostream>
+
+1630741434 c:\users\mr.snic\desktop\codes sample\c++\dortylib\dortymath.h
+	<cmath>
+

@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1573285998 source:c:\shp\nastyaaa\3333\main.cpp
+	<iostream>
+	<windows.h>
+	<cmath>
+	<conio.h>
+

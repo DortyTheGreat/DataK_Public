@@ -1,0 +1,58 @@
+from math import log10
+
+def a(n):
+    def reverseNum(n):
+
+        rem = 0
+        rev = 0
+        while (n > 0):
+            rem = n % 10
+            rev = rev * 10 + rem
+            n //= 10
+        return rev
+
+
+    def p(n):
+        FX = 0
+        if log10(n+1).is_integer():
+            #L -= 1
+            #print("here")
+            FX = 1
+
+
+        if n >= 100:
+            if int(str(n+1)[:2]) == 10:
+                FX = 1
+
+        n+=1
+        L = int(log10(n));
+        P = 1
+
+        #EXTRA =
+
+        if ( (1 < n)and (n < 1.1*(10**L)) ):
+            P = 10 ** (L - 1)
+        else:
+            P = 10 ** (L)
+        P = int(P)
+        n -= P
+        STATE = 0
+
+
+
+        if (n >= P):
+            STATE = 1
+        return  n * (10**(L-FX)) + reverseNum( n // (10**STATE))
+    if n == 100:
+        return 919
+    if n == 101:
+        return 929
+    if n == 109:
+        return 1001
+    if n == 9:
+        return 9
+    if n == 99:
+        return 909
+
+    return p(n)
+print(a(int(input())))

@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1584181060 source:d:\shifr23\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+
+1584183196 source:i:\shifr23\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+

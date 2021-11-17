@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1574703195 source:c:\users\mr.snic\desktop\mpps\main.cpp
+	<iostream>
+	<fstream>
+	<vector>
+

@@ -1,0 +1,17 @@
+void qsort(int* A, int L, int R, int* B){
+if(R - L <= 1) return;
+int mid = A[L + rand() % (R - L)];
+int x = L, y = L;
+for(int i = L; i < R; ++i){
+    if (A[i] < mid){
+    swap(A[x], A[i]); swap(B[x], B[i]);
+    if (x != y){ swap(A[y], A[i]); swap(B[y], B[i]);}
+    ++x; ++y;
+} else if (A[i] == mid) {
+swap(A[y], A[i]); swap(B[y], B[i]);
+++y;
+}
+}
+qsort(A, L, x, B);
+qsort(A, y, R, B);
+}

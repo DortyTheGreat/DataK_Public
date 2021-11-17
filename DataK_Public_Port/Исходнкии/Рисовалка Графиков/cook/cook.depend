@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1573673107 source:c:\users\mr.snic\desktop\cook\main.cpp
+	<iostream>
+	<windows.h>
+	<cmath>
+	<conio.h>
+	<vector>
+

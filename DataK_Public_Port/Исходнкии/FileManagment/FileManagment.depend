@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1602610552 source:c:\users\mr.snic\desktop\filemanagment\main.cpp
+	<iostream>
+	<fstream>
+	<cstddef>
+	<windows.h>
+	<stdlib.h>
+	<ctime>
+	<string>
+	<Windows.h>
+	<conio.h>
+	<stdio.h>
+

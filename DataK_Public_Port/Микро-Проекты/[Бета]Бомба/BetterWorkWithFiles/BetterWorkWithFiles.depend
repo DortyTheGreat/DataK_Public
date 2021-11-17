@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1601750243 source:c:\users\mr.snic\desktop\betterworkwithfiles\main.cpp
+	<iostream>
+	<fstream>
+	<cstddef>
+	<windows.h>
+	<stdlib.h>
+	<ctime>
+

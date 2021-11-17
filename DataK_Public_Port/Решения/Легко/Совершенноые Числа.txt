@@ -1,0 +1,27 @@
+#include <cmath>
+#include <iostream>
+int sign(int a){
+if(a>0){return 1;}
+if(a<0){return -1;}
+return 0;
+}
+using namespace std;
+
+int main()
+{
+   int a,b,ann[10000],m=0;
+   int i=0;
+   double summ=0,poz=1,posses=1;
+cin >> a;
+for(int i=1;i<a;i++){
+    if(a%i==0){summ+=i;posses=0;}
+}
+if(summ==a){
+for(int i=1;i<a;i++){
+    if(a%i==0){cout<<i<<" ";}
+}
+
+
+
+}else{cout<<"0";}
+}

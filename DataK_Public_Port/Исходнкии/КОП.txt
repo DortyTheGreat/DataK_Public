@@ -1,0 +1,205 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+#include <string>
+using namespace std;
+
+string firstword(string d,int yu){
+ string t="";
+    int amop=0;
+    d+=" ";
+    for(int i=0;i<d.size();i++){
+     if(d[i] == ' ' ){
+         amop++;
+     }
+        if(yu == amop && (d[i] != ' ')){
+        if(d[i]!= ' '){ t+=d[i];}   
+        }
+    }
+    return t;
+}
+string stringParse(string d){
+    string h="";
+    int fpro=0;
+    for(int i=0;i<d.size();i++){
+    if(! isdigit(d[i])){
+
+      if(!((d[i] == ' ' ) && (h[fpro-1] == ' '))){  h+=d[i];
+fpro++;
+                          }
+        
+    }
+        }
+    return h;
+}
+
+int intParse(string h){
+    int y=0;
+    int isneg=1;
+    if(h[0] == '-'){
+     isneg=-1;   
+    }
+ for(int i=0;i<h.size();i++){
+     
+     if(isdigit(h[i])){
+         
+      y= y*10 + ((int)(h[i]) - 48);
+     }
+    
+ }
+     return y*isneg;
+}
+double doubleParse(string h){
+    int isneg=1;
+    if(h[0] == '-'){
+     isneg=-1;   
+    }
+    double y=0;
+    int dasisdot=0;
+   int counterfordots=1;
+ for(int i=0;i<h.size()+1;i++){
+     if(h[i] == '.'){dasisdot=1;
+                    i++;}
+     if(isdigit(h[i]) && (dasisdot == 0)){
+         
+      y= y*10 + ((int)(h[i]) - 48);
+     }else{
+        if(isdigit(h[i]) && (dasisdot == 1)){
+            y+=  ((int)(h[i]) - 48) /  pow(10,counterfordots);
+            counterfordots++;
+        }
+     }
+    
+ }
+     return y*isneg;
+}
+
+
+
+
+
+class charac{
+  private:
+    string name;
+    int HP,maxHP,def,dam,y,x,status=1;
+    
+    public:
+    void set_name(){ cin >> name ; }
+    
+    void set_data(){ cin >> maxHP >> HP >> dam >> def >> x >> y;
+                  if(maxHP < 0){
+                 maxHP=0;
+                 }
+                 if(HP < 0){
+                 HP=0;
+                 }
+                  if(HP > maxHP){
+                   HP=maxHP;   
+                  } 
+                   if(dam < 0){
+                   dam=1;   
+                  } 
+                    if(def < 0){
+                   def=0;   
+                  } 
+                    if(HP == 0){
+                     status=0;   
+                    }
+                 }
+   
+    void ret_name(){ cout<<"Name: " << name << endl;}
+     void ret_dam(){ cout<<"Damage: " << dam << endl;}
+     void ret_def(){ cout<<"Defence: " << def << endl;}
+    void ret_HP(){ cout <<"HP: " << HP  << "/" <<maxHP << endl;}
+    void ret_pos(){ cout <<"Position: (" <<x  << ", " <<y <<")" << endl;}
+    void ret_stat(){ cout <<"Status: ";
+                   if(status == 1){ cout << "alive" << endl;}else{cout << "died" << endl;}
+                   }
+    void statusp(){
+     ret_name();
+    ret_stat();
+    ret_HP();
+    ret_dam();
+    ret_def(); 
+    ret_pos();   
+    }
+    void move(int x1,int y1){
+        if((x1 > 0) && (y1 > 0)){}
+        if((x1 < 0) && (y1 > 0)){HP-=5;
+                                dam-=1;
+                                   if(maxHP < 0){
+                 maxHP=0;
+                 }
+                 if(HP < 0){
+                 HP=0;
+                 }
+                  if(HP > maxHP){
+                   HP=maxHP;   
+                  } 
+                   if(dam < 0){
+                   dam=1;   
+                  } 
+                    if(def < 0){
+                   def=0;   
+                  } 
+                    if(HP == 0){
+                     status=0;   
+                    }
+                                }
+        if((x1 < 0) && (y1 < 0)){if(def > 100){HP-=2;}
+                                  if(maxHP < 0){
+                 maxHP=0;
+                 }
+                 if(HP < 0){
+                 HP=0;
+                 }
+                  if(HP > maxHP){
+                   HP=maxHP;   
+                  } 
+                   if(dam < 0){
+                   dam=1;   
+                  } 
+                    if(def < 0){
+                   def=0;   
+                  } 
+                    if(HP == 0){
+                     status=0;   
+                    }  }
+        if((x1 > 0) && (y1 < 0)){ def++;}
+        if(x1 == 0 && y1 == 0){
+         HP=maxHP;   
+        }
+        x= x1;
+        y=y1;
+    }
+    
+};
+
+
+int main(){
+ charac c;
+    c.set_name();
+    c.set_data();
+    int n;
+        string comma;
+     
+       
+        cin >> n;
+        getline(cin,comma);// \r //
+        for(int i=0;i<n;i++){
+         getline(cin,comma);// \r
+            
+         if((int)(comma[comma.size() -1]) == 13){
+             comma.pop_back();
+         }
+            comma+=" ";
+            
+            if(firstword(stringParse(comma) ,0) == "move"){
+             c.move(intParse(firstword(comma,1)),intParse(firstword(comma,2)) );
+            }
+            if(firstword(stringParse(comma) ,0) == "status"){
+             c.statusp();
+            }
+        }
+    return 0;
+}

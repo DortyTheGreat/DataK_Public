@@ -1,0 +1,99 @@
+#include <iostream>
+#include <conio.h>
+#include <fstream>
+#include <windows.h>
+#include "ShellAPI.h"
+using namespace std;
+
+int main()
+{
+    //ShellExecute(NULL, "open", "files\\player.exe", NULL, NULL, SW_SHOWDEFAULT);
+
+    int AmountOfFiles=0;
+    char tempt;
+    int choose;
+    string stroka;
+    string NamesOfFiles[1000],SystemNamesOfFiles[1000];
+    while(1){
+    system("cls");
+    cout << "Made by Dorty at 08.10.2020" << endl << "---" << endl;
+    cout << "Press 1 to play interpreted MP4(run MP4 interpreted videos)" << endl;
+    cout << "Press 2 to convert jpegs to interpreted MP4(to execute from this player later)" << endl;
+    cout << "Press 3 to encrypt Jpegs to TXTs(to output folder)" << endl;
+    tempt=getch();
+    system("cls");
+    if(tempt == '1'){
+            AmountOfFiles=0;
+            cout << "First number represents, what you should type to play the corresponded video" << endl << "---" << endl;
+    ifstream in("files\\setup.txt");
+    while(!(in.eof())){
+        getline(in,stroka);
+
+        //cout << stroka << '\n';
+        cout  << AmountOfFiles << " : " << stroka.substr(stroka.find('*')+1) << endl;
+        NamesOfFiles[AmountOfFiles]=stroka.substr(stroka.find('*')+1);
+        SystemNamesOfFiles[AmountOfFiles]=stroka.substr(0,stroka.find('*'));
+        AmountOfFiles++;
+    }
+    in.close();
+    cout <<"---" << endl<< "First number represents, what you should type to play the corresponded video" << endl;
+    cout << "!!! MAKE SURE, THAT YOU ARE INSERTING NUMBERS ONLY !!!" << endl;
+    cin >> choose;
+    ofstream ou("files\\args.txt");
+    ou << SystemNamesOfFiles[choose];
+    ou.close();
+    ShellExecute(NULL, "open", ("files\\player.exe"), NULL, NULL, SW_SHOWDEFAULT);
+    // START THE PLAYER WITH WRITTING SystemNameOfFiles[AmountOfFiles] to the args.txt, then star the player.exe
+    }
+    if(tempt == '2'){
+            string amountOfImages,Quality,coefficent;
+            string StartStringForJpegFile,StartStringForTxtFile,FolderNameOfInput,CustomNickNameForOutPut,fps;
+        ifstream in("input_Jpegs_here\\setup.txt");
+        in >> amountOfImages >>  Quality >> coefficent >> StartStringForJpegFile >> StartStringForTxtFile >> FolderNameOfInput >> CustomNickNameForOutPut >> fps;
+        in.close();
+            while(1){
+            char MakeAChoose;
+
+        cout << "First number represents, what you should type to change the corresponded setting" << endl<<"Type 0 to continue with written settings"<< endl << "---" << endl;
+        cout << "[1]amountOfImages=" <<amountOfImages << endl;
+        cout << "[2]Quality=" <<Quality << endl;
+        cout << "[3]coefficent=" <<coefficent << endl;
+        cout << "[4]StartStringForJpegFile=" <<StartStringForJpegFile << endl;
+        cout << "[5]StartStringForTxtFile=" <<StartStringForTxtFile << endl;
+        cout << "[6]FolderNameOfInput=" <<FolderNameOfInput << endl;
+        cout << "[7]CustomNickNameForOutPut=" <<CustomNickNameForOutPut << endl;
+        cout << "[8]fps=" <<fps << endl;
+        cout << "[9]TYPE 9 TO EXIT" << endl;
+        cout <<  "---"<<endl <<"First number represents, what you should type to change the corresponded setting" << endl<<"Type 0 to continue with written settings" <<   endl;
+        MakeAChoose = getch();
+        system("cls");
+        if(MakeAChoose == '1'){cout << "redeclare the amountOfImages:"; cin >> amountOfImages;}
+        if(MakeAChoose == '2'){cout << "redeclare the Quality:"; cin >> Quality;}
+        if(MakeAChoose == '3'){cout << "redeclare the coefficent:"; cin >> coefficent;}
+        if(MakeAChoose == '4'){cout << "redeclare the StartStringForJpegFile:"; cin >> StartStringForJpegFile;}
+        if(MakeAChoose == '5'){cout << "redeclare the StartStringForTxtFile:"; cin >> StartStringForTxtFile;}
+        if(MakeAChoose == '6'){cout << "redeclare the FolderNameOfInput:"; cin >> FolderNameOfInput;}
+        if(MakeAChoose == '7'){cout << "redeclare the CustomNickNameForOutPut:"; cin >> CustomNickNameForOutPut;}
+        if(MakeAChoose == '8'){cout << "redeclare the fps:"; cin >> fps;}
+        if(MakeAChoose == '9'){break;}
+        if(MakeAChoose == '0'){
+            ofstream ou3("input_Jpegs_here\\setup.txt");
+            ou3 << amountOfImages << endl;
+            ou3 << Quality << endl;
+            ou3 << coefficent << endl;
+            ou3 << StartStringForJpegFile << endl;
+            ou3 << StartStringForTxtFile << endl;
+            ou3 << FolderNameOfInput << endl;
+            ou3 << CustomNickNameForOutPut << endl;
+            ou3 << fps << endl;
+            ou3.close();
+            ShellExecute(NULL, "open", ("files\\main.exe"), NULL, NULL, SW_SHOWDEFAULT);
+        }
+        system("cls");
+            }
+    }
+    //if(tempt == '1' || tempt == '2' || tempt == '3'){break;}
+
+    }
+
+}

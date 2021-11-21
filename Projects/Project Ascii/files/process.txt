@@ -1,0 +1,3 @@
+1
+3100
+Program started and has finished successfully with converting 3100 images
